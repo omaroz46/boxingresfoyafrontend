@@ -1,0 +1,20 @@
+<table mat-table>
+  
+    <mat-text-column name="name" headerText="Name">
+    </mat-text-column>
+  
+    <mat-text-column name="location" headerText="Location">
+    </mat-text-column>
+
+    <mat-text-column name="contact" headerText="Contact">
+    </mat-text-column>
+  
+    <tr *matHeaderRowDef="columns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: columns;" mat-row></tr>
+  
+  </table>
+  
+  <a mat-raised-button color="primary" (click)="create()">View</a>
+  <a mat-raised-button color="primary">Edit</a>
+  <a mat-raised-button color="primary">Delete</a>
+  <a mat-raised-button color="primary">Create</a>

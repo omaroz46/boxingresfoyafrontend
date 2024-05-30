@@ -1,0 +1,29 @@
+<form (ngSubmit)="save(boxingClubForm.value)" [formGroup]="boxingClubForm">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text"
+      formControlName="name"
+      [checked]="boxingClub.name"
+      matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Location</mat-label>
+        <input type="text"
+        formControlName="location"
+        [checked]="boxingClub.location"
+        matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contact Info</mat-label>
+      <input type="text"
+      formControlName="contactInfo"
+      [checked]="boxingClub.contactInfo"
+      matInput required />
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Speichern</button>
+    <form (ngSubmit)="save(boxingClubForm.value)">
+  </form>

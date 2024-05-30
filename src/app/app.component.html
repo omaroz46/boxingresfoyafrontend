@@ -7,7 +7,21 @@
     <span>Home</span>
   </button>
   <button mat-menu-item [routerLink]="['boxingClubs']">
-    <mat-icon>fitness_center</mat-icon>
+    <mat-icon>sports_mma</mat-icon>
     <span>Boxing Clubs</span>
   </button>
+  <button mat-menu-item [routerLink]="['fighters']">
+    <mat-icon>group</mat-icon>
+    <span>Fighters</span>
+  </button>
+  <button mat-menu-item [routerLink]="['fights']">
+    <mat-icon>fitness_center</mat-icon>
+    <span>Fights</span>
+  </button>
+  <button mat-menu-item [routerLink]="['events']">
+    <mat-icon>event</mat-icon>
+    <span>Events</span>
+  </button>
 </mat-menu>
+
+<router-outlet></router-outlet>

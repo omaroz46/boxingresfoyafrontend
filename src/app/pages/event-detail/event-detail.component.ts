@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Event } from '../../data/event';
 import { EventService } from '../../services/event.service';
 
@@ -16,8 +16,8 @@ export class EventDetailComponent implements OnInit {
   public eventForm = new FormGroup({
     id: new FormControl(0),
     date: new FormControl(),
-    venue: new FormControl(''),
-    description: new FormControl('')
+    venue: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    description: new FormControl('', [Validators.required, Validators.maxLength(100)])
   })
 
   events: Event[] = []; 
@@ -60,12 +60,12 @@ export class EventDetailComponent implements OnInit {
     if (this.event.id) {
       this.eventService.update(this.event).subscribe({
         next: () => this.back(),
-        error: () => {}
+        //error: () => {}
       })
     } else {
       this.eventService.save(this.event).subscribe({
         next: () => this.back(),
-        error: () => {}
+        //error: () => {}
       })
     }
   }

@@ -1,33 +1,33 @@
-<form (ngSubmit)="save(boxingClubForm.value)" [formGroup]="boxingClubForm">
+<form (ngSubmit)="save()" [formGroup]="boxingClubForm">
 
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input type="text"
-      formControlName="name"
-      [checked]="boxingClub.name"
-      matInput required />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input type="text" formControlName="name" matInput required />
+    <mat-error *ngIf="boxingClubForm.get('name')?.invalid && (boxingClubForm.get('name')?.dirty || boxingClubForm.get('name')?.touched)">
+      <span *ngIf="boxingClubForm.get('name')?.hasError('required')">Name is required</span>
+      <span *ngIf="boxingClubForm.get('name')?.hasError('maxlength')">Name must be less than 50 characters</span>
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Location</mat-label>
-        <input type="text"
-        formControlName="location"
-        [checked]="boxingClub.location"
-        matInput required />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Location</mat-label>
+    <input type="text" formControlName="location" matInput required />
+    <mat-error *ngIf="boxingClubForm.get('location')?.invalid && (boxingClubForm.get('location')?.dirty || boxingClubForm.get('location')?.touched)">
+      <span *ngIf="boxingClubForm.get('location')?.hasError('required')">Location is required</span>
+      <span *ngIf="boxingClubForm.get('location')?.hasError('maxlength')">Location must be less than 100 characters</span>
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Contact Info</mat-label>
-      <input type="text"
-      formControlName="contactInfo"
-      [checked]="boxingClub.contactInfo"
-      matInput required />
-    </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit">Save</button>
-    <form (ngSubmit)="save(boxingClubForm.value)">
-    
-      <button mat-raised-button>Cancel</button>
-    <form (ngSubmit)="back()">
-      
-  </form>
+  <mat-form-field>
+    <mat-label>Contact Info</mat-label>
+    <input type="text" formControlName="contactInfo" matInput required />
+    <mat-error *ngIf="boxingClubForm.get('contactInfo')?.invalid && (boxingClubForm.get('contactInfo')?.dirty || boxingClubForm.get('contactInfo')?.touched)">
+      <span *ngIf="boxingClubForm.get('contactInfo')?.hasError('required')">Contact Info is required</span>
+      <span *ngIf="boxingClubForm.get('contactInfo')?.hasError('maxlength')">Contact Info must be less than 100 characters</span>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Save</button>
+  <button mat-raised-button (click)="back()">Cancel</button>
+
+</form>

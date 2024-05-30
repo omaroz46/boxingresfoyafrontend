@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { BoxingClubService } from '../../services/boxing-club.service';
 import { BoxingClub } from '../../data/boxing-club';
 
@@ -15,10 +15,10 @@ export class BoxingClubDetailComponent implements OnInit {
 
   public boxingClubForm = new FormGroup({
     id: new FormControl(0),
-    name: new FormControl(''),
-    location: new FormControl(''),
-    contactInfo: new FormControl('')
-  })
+    name: new FormControl('', [Validators.required, Validators.maxLength(50)]), 
+    location: new FormControl('', [Validators.required, Validators.maxLength(100)]), 
+    contactInfo: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+  });
 
   boxingClubs: BoxingClub[] = []; 
 
@@ -50,23 +50,25 @@ export class BoxingClubDetailComponent implements OnInit {
     return o1 && o2 ? o1?.id === o2?.id : o1 === o2;
   }
 
-  async back () {
-    await this.router.navigate(['boxingClubs'])
+  async back(): Promise<void> {
+    await this.router.navigate(['boxingClubs']);
   }
 
-  async save (formData: any) {
-    this.boxingClub = Object.assign(formData)
-
-    if (this.boxingClub.id) {
-      this.boxingClubService.update(this.boxingClub).subscribe({
-        next: () => this.back(),
-        error: () => {}
-      })
-    } else {
-      this.boxingClubService.save(this.boxingClub).subscribe({
-        next: () => this.back(),
-        error: () => {}
-      })
+  async save(): Promise<void> {
+    if (this.boxingClubForm.valid) {
+      const formData = this.boxingClubForm.value;
+      this.boxingClub = Object.assign({}, this.boxingClub, formData);
+      try {
+        if (this.boxingClub.id) {
+          await this.boxingClubService.update(this.boxingClub).toPromise();
+        } else {
+          await this.boxingClubService.save(this.boxingClub).toPromise();
+        }
+        await this.back();
+      } catch (error) {
+        console.error("Error while saving boxing club:", error);
+      }
     }
   }
+  
 }

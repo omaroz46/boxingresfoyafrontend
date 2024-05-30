@@ -1,37 +1,44 @@
 <form (ngSubmit)="save(fighterForm.value)" [formGroup]="fighterForm">
 
-    <mat-form-field>
-      <mat-label>Name</mat-label>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input type="text"
+    formControlName="name"
+    matInput required />
+    <mat-error *ngIf="fighterForm.controls['name'].invalid && (fighterForm.controls['name'].dirty || fighterForm.controls['name'].touched)">
+      Name is required and must be less than 50 characters
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-label>Weight Class</mat-label>
       <input type="text"
-      formControlName="name"
-      [checked]="fighter.name"
+      formControlName="weightClass"
       matInput required />
-    </mat-form-field>
+      <mat-error *ngIf="fighterForm.controls['weightClass'].invalid && (fighterForm.controls['weightClass'].dirty || fighterForm.controls['weightClass'].touched)">
+        Weight Class is required and must be less than 50 characters
+      </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Weight Class</mat-label>
-        <input type="text"
-        formControlName="weightClass"
-        [checked]="fighter.weightClass"
-        matInput required />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fight Record</mat-label>
+    <input type="text"
+    formControlName="fightRecord"
+    matInput required />
+    <mat-error *ngIf="fighterForm.controls['fightRecord'].invalid && (fighterForm.controls['fightRecord'].dirty || fighterForm.controls['fightRecord'].touched)">
+      Fight Record is required and must be less than 50 characters
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Fight Record</mat-label>
+  <mat-form-field>
+      <mat-label>Boxing Club</mat-label>
       <input type="text"
-      formControlName="fightRecord"
-      [checked]="fighter.fightRecord"
+      formControlName="boxingClub"
       matInput required />
-    </mat-form-field>
+      <mat-error *ngIf="fighterForm.controls['boxingClub'].invalid && (fighterForm.controls['boxingClub'].dirty || fighterForm.controls['boxingClub'].touched)">
+        Boxing Club is required
+      </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Boxing Club</mat-label>
-        <input type="text"
-        formControlName="boxingClub"
-        [checked]="fighter.boxingClub"
-        matInput required />
-    </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit">Save</button>
-    <form (ngSubmit)="save(fighterForm.value)">
-  </form>
+  <button mat-raised-button color="primary" type="submit">Save</button>
+</form>

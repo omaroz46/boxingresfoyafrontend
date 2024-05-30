@@ -28,6 +28,7 @@ import { FighterDetailComponent } from './pages/fighter-detail/fighter-detail.co
 import { FightDetailComponent } from './pages/fight-detail/fight-detail.component';
 import { FightListComponent } from './pages/fight-list/fight-list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

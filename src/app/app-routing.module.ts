@@ -69,7 +69,6 @@ const routes: Routes = [
     pathMatch: 'full',
     component: EventDetailComponent
   }
-
 ];
 
 @NgModule({

@@ -1,29 +1,32 @@
 <form (ngSubmit)="save(eventForm.value)" [formGroup]="eventForm">
 
-    <mat-form-field>
-      <mat-label>Date</mat-label>
-      <input type="text"
-      formControlName="date"
-      [checked]="event.date"
-      matInput required />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input type="text" formControlName="date" matInput required />
+    <mat-error *ngIf="eventForm.get('date')?.invalid && (eventForm.get('date')?.dirty || eventForm.get('date')?.touched)">
+      <span *ngIf="eventForm.get('date')?.hasError('required')">Date is required</span>
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Venue</mat-label>
-        <input type="text"
-        formControlName="venue"
-        [checked]="event.venue"
-        matInput required />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Venue</mat-label>
+    <input type="text" formControlName="venue" matInput required maxlength="100" />
+    <mat-error *ngIf="eventForm.get('venue')?.invalid && (eventForm.get('venue')?.dirty || eventForm.get('venue')?.touched)">
+      <span *ngIf="eventForm.get('venue')?.hasError('required')">Venue is required</span>
+      <span *ngIf="eventForm.get('venue')?.hasError('maxlength')">Venue must be less than 100 characters</span>
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Description</mat-label>
-      <input type="text"
-      formControlName="description"
-      [checked]="event.description"
-      matInput required />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input type="text" formControlName="description" matInput required maxlength="100" />
+    <mat-error *ngIf="eventForm.get('description')?.invalid && (eventForm.get('description')?.dirty || eventForm.get('description')?.touched)">
+      <span *ngIf="eventForm.get('description')?.hasError('required')">Description is required</span>
+      <span *ngIf="eventForm.get('description')?.hasError('maxlength')">Description must be less than 100 characters</span>
+    </mat-error>
+  </mat-form-field>
   
-    <button mat-raised-button color="primary" type="submit">Save</button>
-    <form (ngSubmit)="save(eventForm.value)">
-  </form>
+  <button mat-raised-button color="primary" type="submit">Save</button>
+  <button mat-raised-button type="button" (click)="back()">Cancel</button>
+
+</form>

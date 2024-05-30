@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Fight } from '../../data/fight';
 import { FightService } from '../../services/fight.service';
 
@@ -15,9 +15,9 @@ export class FightDetailComponent implements OnInit {
   public fightForm = new FormGroup({
     id: new FormControl(0),
     date: new FormControl(),
-    location: new FormControl(''),
-    opponent: new FormControl(''),
-    result: new FormControl(''),
+    location: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    opponent: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    result: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     event: new FormControl()
   })
 
@@ -63,12 +63,10 @@ export class FightDetailComponent implements OnInit {
     if (this.fight.id) {
       this.fightService.update(this.fight).subscribe({
         next: () => this.back(),
-        error: () => {}
       })
     } else {
       this.fightService.save(this.fight).subscribe({
         next: () => this.back(),
-        error: () => {}
       })
     }
   }

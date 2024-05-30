@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Fighter } from '../../data/fighter';
 import { FighterService } from '../../services/fighter.service';
 
@@ -16,9 +16,9 @@ export class FighterDetailComponent implements OnInit {
 
   public fighterForm = new FormGroup({
     id: new FormControl(0),
-    name: new FormControl(''),
-    weightClass: new FormControl(''),
-    fightRecord: new FormControl(''),
+    name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    weightClass: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    fightRecord: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     boxingClub: new FormControl()
   })
 
@@ -63,12 +63,12 @@ export class FighterDetailComponent implements OnInit {
     if (this.fighter.id) {
       this.fighterService.update(this.fighter).subscribe({
         next: () => this.back(),
-        error: () => {}
+        //error: () => {}
       })
     } else {
       this.fighterService.save(this.fighter).subscribe({
         next: () => this.back(),
-        error: () => {}
+        //error: () => {}
       })
     }
   }

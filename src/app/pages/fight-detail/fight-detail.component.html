@@ -1,45 +1,54 @@
 <form (ngSubmit)="save(fightForm.value)" [formGroup]="fightForm">
 
-    <mat-form-field>
-      <mat-label>Date</mat-label>
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input type="text"
+    formControlName="date"
+    matInput required />
+    <mat-error *ngIf="fightForm.controls['date'].invalid && (fightForm.controls['date'].dirty || fightForm.controls['date'].touched)">
+      Date is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-label>Location</mat-label>
       <input type="text"
-      formControlName="date"
-      [checked]="fight.date"
+      formControlName="location"
       matInput required />
-    </mat-form-field>
+      <mat-error *ngIf="fightForm.controls['location'].invalid && (fightForm.controls['location'].dirty || fightForm.controls['location'].touched)">
+        Location is required and must be less than 50 characters
+      </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Location</mat-label>
-        <input type="text"
-        formControlName="location"
-        [checked]="fight.location"
-        matInput required />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Opponent</mat-label>
+    <input type="text"
+    formControlName="opponent"
+    matInput required />
+    <mat-error *ngIf="fightForm.controls['opponent'].invalid && (fightForm.controls['opponent'].dirty || fightForm.controls['opponent'].touched)">
+      Opponent is required and must be less than 50 characters
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Opponent</mat-label>
+  <mat-form-field>
+      <mat-label>Result</mat-label>
       <input type="text"
-      formControlName="opponent"
-      [checked]="fight.opponent"
+      formControlName="result"
       matInput required />
-    </mat-form-field>
+      <mat-error *ngIf="fightForm.controls['result'].invalid && (fightForm.controls['result'].dirty || fightForm.controls['result'].touched)">
+        Result is required and must be less than 50 characters
+      </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Result</mat-label>
-        <input type="text"
-        formControlName="result"
-        [checked]="fight.result"
-        matInput required />
-    </mat-form-field>
+  <mat-form-field>
+      <mat-label>Event</mat-label>
+      <input type="text"
+      formControlName="event"
+      matInput required />
+      <mat-error *ngIf="fightForm.controls['event'].invalid && (fightForm.controls['event'].dirty || fightForm.controls['event'].touched)">
+        Event is required
+      </mat-error>
+  </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Event</mat-label>
-        <input type="text"
-        formControlName="event"
-        [checked]="fight.event"
-        matInput required />
-    </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit">Save</button>
-    <form (ngSubmit)="save(fightForm.value)">
-  </form>
+  <button mat-raised-button color="primary" type="submit">Save</button>
+</form>

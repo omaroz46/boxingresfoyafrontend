@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BoxingClub } from '../../data/boxing-club';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BoxingClubService } from '../../services/boxing-club.service';
+import { BoxingClub } from '../../data/boxing-club';
 
 @Component({
   selector: 'app-boxing-club-detail',
@@ -20,7 +20,7 @@ export class BoxingClubDetailComponent implements OnInit {
     contactInfo: new FormControl('')
   })
 
-  boxingClubs : Array<BoxingClub> = []
+  boxingClubs: BoxingClub[] = []; 
 
   constructor (
     private router: Router,

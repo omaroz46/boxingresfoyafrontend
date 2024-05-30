@@ -1,1 +1,43 @@
-<p>fighter-list works!</p>
+<table mat-table [dataSource]="fighterDataSource">
+
+    <mat-text-column name="name" headerText="Name">
+    </mat-text-column>
+  
+    <mat-text-column name="weightClass" headerText="Weight Class">
+    </mat-text-column>
+  
+    <mat-text-column name="fightRecord" headerText="Fight Record">
+    </mat-text-column>
+  
+    <mat-text-column name="boxingClub" headerText="Boxing Club">
+    </mat-text-column>
+  
+    <ng-container matColumnDef="actions">
+      <th *matHeaderCellDef class="w-75 th-center" mat-header-cell>Actions</th>
+      <td *matCellDef="let element" mat-cell style="text-align: end">
+  
+    
+        <button
+          (click)="edit(element)"
+          color="warn" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+    
+        <button
+          (click)="delete(element)"
+          color="warn" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+  
+  <button
+  (click)="create()"
+  color="primary" mat-icon-button>
+  <mat-icon>add</mat-icon>
+  </button>
+  

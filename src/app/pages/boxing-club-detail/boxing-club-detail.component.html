@@ -24,6 +24,10 @@
       matInput required />
     </mat-form-field>
   
-    <button mat-raised-button color="primary" type="submit">Speichern</button>
+    <button mat-raised-button color="primary" type="submit">Save</button>
     <form (ngSubmit)="save(boxingClubForm.value)">
+    
+      <button mat-raised-button>Cancel</button>
+    <form (ngSubmit)="back()">
+      
   </form>

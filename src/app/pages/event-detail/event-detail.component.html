@@ -1,1 +1,29 @@
-<p>event-detail works!</p>
+<form (ngSubmit)="save(eventForm.value)" [formGroup]="eventForm">
+
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input type="text"
+      formControlName="date"
+      [checked]="event.date"
+      matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Venue</mat-label>
+        <input type="text"
+        formControlName="venue"
+        [checked]="event.venue"
+        matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input type="text"
+      formControlName="description"
+      [checked]="event.description"
+      matInput required />
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <form (ngSubmit)="save(eventForm.value)">
+  </form>

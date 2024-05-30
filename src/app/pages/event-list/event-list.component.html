@@ -1,1 +1,39 @@
-<p>event-list works!</p>
+<table mat-table [dataSource]="eventDataSource">
+
+  <mat-text-column name="date" headerText="Date">
+  </mat-text-column>
+
+  <mat-text-column name="venue" headerText="Venue">
+  </mat-text-column>
+
+  <mat-text-column name="description" headerText="Description">
+  </mat-text-column>
+
+  <ng-container matColumnDef="actions">
+    <th *matHeaderCellDef class="w-75 th-center" mat-header-cell>Actions</th>
+    <td *matCellDef="let element" mat-cell style="text-align: end">
+
+  
+      <button
+        (click)="edit(element)"
+        color="warn" mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+  
+      <button
+        (click)="delete(element)"
+        color="warn" mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
+
+<button
+(click)="create()"
+color="primary" mat-icon-button>
+<mat-icon>add</mat-icon>
+</button>

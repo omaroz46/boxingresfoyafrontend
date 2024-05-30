@@ -1,1 +1,45 @@
-<p>fight-detail works!</p>
+<form (ngSubmit)="save(fightForm.value)" [formGroup]="fightForm">
+
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input type="text"
+      formControlName="date"
+      [checked]="fight.date"
+      matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Location</mat-label>
+        <input type="text"
+        formControlName="location"
+        [checked]="fight.location"
+        matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Opponent</mat-label>
+      <input type="text"
+      formControlName="opponent"
+      [checked]="fight.opponent"
+      matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Result</mat-label>
+        <input type="text"
+        formControlName="result"
+        [checked]="fight.result"
+        matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Event</mat-label>
+        <input type="text"
+        formControlName="event"
+        [checked]="fight.event"
+        matInput required />
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <form (ngSubmit)="save(fightForm.value)">
+  </form>

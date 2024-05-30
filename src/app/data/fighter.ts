@@ -7,5 +7,4 @@ export class Fighter {
     public weightClass : string = ''
     public fightRecord : string = ''
     public boxingClub : BoxingClub | undefined
-    static id: any
   }

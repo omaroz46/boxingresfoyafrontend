@@ -1,1 +1,37 @@
-<p>fighter-detail works!</p>
+<form (ngSubmit)="save(fighterForm.value)" [formGroup]="fighterForm">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text"
+      formControlName="name"
+      [checked]="fighter.name"
+      matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Weight Class</mat-label>
+        <input type="text"
+        formControlName="weightClass"
+        [checked]="fighter.weightClass"
+        matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Fight Record</mat-label>
+      <input type="text"
+      formControlName="fightRecord"
+      [checked]="fighter.fightRecord"
+      matInput required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Boxing Club</mat-label>
+        <input type="text"
+        formControlName="boxingClub"
+        [checked]="fighter.boxingClub"
+        matInput required />
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <form (ngSubmit)="save(fighterForm.value)">
+  </form>

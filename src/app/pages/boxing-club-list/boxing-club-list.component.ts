@@ -15,8 +15,7 @@ import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-
 })
 export class BoxingClubListComponent implements OnInit {
 
-  boxingClubDataSource: MatTableDataSource<BoxingClub> = new MatTableDataSource<BoxingClub>();
-
+  public boxingClubDataSource = new MatTableDataSource<BoxingClub>();
 
   columns = ['name','location','contact','actions']
 

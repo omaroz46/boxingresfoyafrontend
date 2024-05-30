@@ -21,13 +21,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-// import { FighterListComponent } from './fighter-list/fighter-list.component';
-// import { FighterDetailComponent } from './fighter-detail/fighter-detail.component';
-// import { FightListComponent } from './fight-list/fight-list.component';
-// import { FightDetailComponent } from './fight-detail/fight-detail.component';
-// import { EventListComponent } from './event-list/event-list.component';
-// import { EventDetailComponent } from './event-detail/event-detail.component';
-
+import { EventListComponent } from './pages/event-list/event-list.component';
+import { EventDetailComponent } from './pages/event-detail/event-detail.component';
+import { FighterListComponent } from './pages/fighter-list/fighter-list.component';
+import { FighterDetailComponent } from './pages/fighter-detail/fighter-detail.component';
+import { FightDetailComponent } from './pages/fight-detail/fight-detail.component';
+import { FightListComponent } from './pages/fight-list/fight-list.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +34,12 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     BoxingClubListComponent,
     BoxingClubDetailComponent,
     ConfirmDialogComponent,
-    // FighterListComponent,
-    // FighterDetailComponent,
-    // FightListComponent,
-    // FightDetailComponent,
-    // EventListComponent,
-    // EventDetailComponent
+    EventListComponent,
+    EventDetailComponent,
+    FighterListComponent,
+    FighterDetailComponent,
+    FightListComponent,
+    FightDetailComponent
   ],
   imports: [
     BrowserModule,

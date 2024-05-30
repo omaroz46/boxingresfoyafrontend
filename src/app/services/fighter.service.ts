@@ -23,16 +23,16 @@ import { Fighter } from "../data/fighter";
       return this.http.get<Fighter>(environment.backendBaseUrl + this.backendUrl + `/${id}`);
     }
 
-    public update(BoxingClub: Fighter): Observable<Fighter> {
+    public update(Fighter: Fighter): Observable<Fighter> {
         return this.http.put<Fighter>(environment.backendBaseUrl + this.backendUrl + `/${Fighter.id}`, Fighter);
       }
     
-      public save(BoxingClub: Fighter): Observable<Fighter> {
-        return this.http.post<Fighter>(environment.backendBaseUrl + this.backendUrl, Fighter);
-      }
+    public save(Fighter: Fighter): Observable<Fighter> {
+      return this.http.post<Fighter>(environment.backendBaseUrl + this.backendUrl, Fighter);
+    }
     
-      public delete(id: number): Observable<HttpResponse<string>> {
-        return this.http.delete<string>(environment.backendBaseUrl + this.backendUrl + `/${id}`, {observe: 'response'});
-      }
+    public delete(id: number): Observable<HttpResponse<string>> {
+      return this.http.delete<string>(environment.backendBaseUrl + this.backendUrl + `/${id}`, {observe: 'response'});
+    }
   
   }

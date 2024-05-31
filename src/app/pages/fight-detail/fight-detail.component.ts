@@ -58,7 +58,7 @@ export class FightDetailComponent implements OnInit {
   }
 
   async back () {
-    await this.router.navigate(['fighters'])
+    await this.router.navigate(['fights'])
   }
 
   async save (formData: any) {

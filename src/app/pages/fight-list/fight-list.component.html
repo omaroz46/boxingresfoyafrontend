@@ -12,8 +12,10 @@
     <mat-text-column name="result" headerText="Result">
     </mat-text-column>
 
-    <mat-text-column name="event" headerText="Event">
-    </mat-text-column>
+    <ng-container matColumnDef="event">
+      <th *matHeaderCellDef mat-header-cell>Event</th>
+      <td *matCellDef="let element" mat-cell> {{element.event ? element.event.description : ''}} </td>
+    </ng-container>  
 
     <ng-container matColumnDef="actions">
       <th *matHeaderCellDef class="w-75 th-center" mat-header-cell>Actions</th>

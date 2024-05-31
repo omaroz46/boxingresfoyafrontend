@@ -8,6 +8,7 @@ import { FightDetailComponent } from './pages/fight-detail/fight-detail.componen
 import { EventListComponent } from './pages/event-list/event-list.component';
 import { FightListComponent } from './pages/fight-list/fight-list.component';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
+import { NoAccessComponent } from './pages/no-access/no-access.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
     path: 'event/:id',
     pathMatch: 'full',
     component: EventDetailComponent
+  },
+  {
+    path: 'noaccess',
+    component: NoAccessComponent
   }
 ];
 

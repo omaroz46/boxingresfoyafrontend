@@ -18,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { EventListComponent } from './pages/event-list/event-list.component';
@@ -27,7 +27,33 @@ import { FighterListComponent } from './pages/fighter-list/fighter-list.componen
 import { FighterDetailComponent } from './pages/fighter-detail/fighter-detail.component';
 import { FightDetailComponent } from './pages/fight-detail/fight-detail.component';
 import { FightListComponent } from './pages/fight-list/fight-list.component';
+import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { environment } from './environments/environments';
+import { AuthService } from './services/auth.service';
+import { NoAccessComponent } from './pages/no-access/no-access.component';
+import { MatCardModule } from '@angular/material/card';
+import { AppLoginComponent } from './pages/app-login/app-login.component';
+import { AppAuthGuard } from './guards/app.auth.guard';
 
+
+export const authConfig: AuthConfig = {
+  issuer: 'http://localhost:8080/realms/ILV',
+  requireHttps: false,
+  redirectUri: environment.frontendBaseUrl,
+  postLogoutRedirectUri: environment.frontendBaseUrl,
+  clientId: 'boxingresfoya',
+  scope: 'openid profile roles offline_access',
+  responseType: 'code',
+  showDebugInformation: true,
+  requestAccessToken: true,
+  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  silentRefreshTimeout: 500,
+  clearHashAfterLogin: true,
+};
+
+export function storageFactory(): OAuthStorage {
+  return sessionStorage;
+}
 
 @NgModule({
   declarations: [
@@ -40,12 +66,16 @@ import { FightListComponent } from './pages/fight-list/fight-list.component';
     FighterListComponent,
     FighterDetailComponent,
     FightListComponent,
-    FightDetailComponent
+    FightDetailComponent,
+    NoAccessComponent,
+    AppLoginComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     MatTableModule,
     MatIconModule,
@@ -58,11 +88,33 @@ import { FightListComponent } from './pages/fight-list/fight-list.component';
     MatToolbarModule,
     MatMenuModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN'
+    }),
+    OAuthModule.forRoot({
+      resourceServer: {
+        sendAccessToken: true
+      }
+    }),
     ReactiveFormsModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: AuthConfig,
+      useValue: authConfig
+    },
+    {
+      provide: OAuthStorage,
+      useFactory: storageFactory
+    },
+    AppAuthGuard
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+  export class AppModule { 
+    constructor(authService: AuthService) {
+      authService.initAuth().finally();
+    }
+}

@@ -9,6 +9,8 @@ import { EventListComponent } from './pages/event-list/event-list.component';
 import { FightListComponent } from './pages/fight-list/fight-list.component';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 import { NoAccessComponent } from './pages/no-access/no-access.component';
+import { AppAuthGuard } from './guards/app.auth.guard';
+import { AppRoles } from './app.roles';
 
 const routes: Routes = [
   {
@@ -68,7 +70,11 @@ const routes: Routes = [
   {
     path: 'event/:id',
     pathMatch: 'full',
-    component: EventDetailComponent
+    component: EventDetailComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Admin]
+    }
   },
   {
     path: 'noaccess',

@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BoxingClubService } from '../../services/boxing-club.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 
 @Component({

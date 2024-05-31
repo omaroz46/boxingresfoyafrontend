@@ -9,7 +9,7 @@ import { BoxingClub } from "../data/boxing-club";
   })
   export class BoxingClubService {
   
-    readonly backendUrl = 'boxingClubs';
+    readonly backendUrl = 'boxingclub';
   
     constructor(
       private http: HttpClient

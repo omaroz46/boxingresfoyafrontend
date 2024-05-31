@@ -27,6 +27,7 @@ export class EventListComponent implements OnInit {
   ) {}
 
   async ngOnInit () {
+    
     this.reloadData()
   }
 

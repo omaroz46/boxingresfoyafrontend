@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Fighter } from '../../data/fighter';
 import { FighterService } from '../../services/fighter.service';
 import { BoxingClub } from '../../data/boxing-club';
+import { BoxingClubService } from '../../services/boxing-club.service';
 
 
 
@@ -17,20 +18,20 @@ export class FighterDetailComponent implements OnInit {
 
   public fighterForm = new FormGroup({
     id: new FormControl(0),
+    fightRecord: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     weightClass: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    fightRecord: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     boxingClub: new FormControl()
   })
 
-  fighters: Fighter[] = []; 
   boxingClubs: BoxingClub[] = [];
 
   constructor (
     private router: Router,
     private route: ActivatedRoute,
     private fighterService: FighterService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private boxingClubService: BoxingClubService
   ) {}
 
   ngOnInit(): void {
@@ -46,8 +47,8 @@ export class FighterDetailComponent implements OnInit {
         })
     }
 
-    this.fighterService.getList().subscribe(obj => {
-      this.fighters = obj
+    this.boxingClubService.getList().subscribe(obj => {
+      this.boxingClubs = obj
     })
   }
 
@@ -60,7 +61,7 @@ export class FighterDetailComponent implements OnInit {
   }
 
   async save (formData: any) {
-    this.fighters = Object.assign(formData)
+    this.fighter = Object.assign(formData)
 
     if (this.fighter.id) {
       this.fighterService.update(this.fighter).subscribe({

@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Fight } from '../../data/fight';
 import { FightService } from '../../services/fight.service';
 import { Event } from '../../data/event';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-fight-detail',
@@ -29,7 +30,8 @@ export class FightDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private fightService: FightService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private eventService: EventService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +50,10 @@ export class FightDetailComponent implements OnInit {
 
     this.fightService.getList().subscribe(obj => {
       this.fights = obj
+    })
+
+    this.eventService.getList().subscribe(obj => {
+      this.events = obj
     })
   }
 

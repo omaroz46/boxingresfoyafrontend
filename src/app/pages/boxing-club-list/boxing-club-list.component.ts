@@ -17,7 +17,7 @@ export class BoxingClubListComponent implements OnInit {
 
   public boxingClubDataSource = new MatTableDataSource<BoxingClub>();
 
-  columns = ['name','location','contact','actions']
+  columns = ['name','location','contactInfo','actions']
 
 
   constructor (
@@ -57,7 +57,7 @@ export class BoxingClubListComponent implements OnInit {
       if (dialogResult === true) {
         this.service.delete(obj.id).subscribe({
           next: response => {
-            if (response.status === 200) {
+            if (response.status === 204) {
               this.snackBar.open('The entry has been deleted.', '', {duration: 4000});
               this.reloadData()
             } else {

@@ -55,7 +55,7 @@ export class FighterListComponent implements OnInit {
       if (dialogResult === true) {
         this.service.delete(obj.id).subscribe({
           next: response => {
-            if (response.status === 200) {
+            if (response.status === 204) {
               this.snackBar.open('The entry has been deleted.', '', {duration: 4000});
               this.reloadData()
             } else {

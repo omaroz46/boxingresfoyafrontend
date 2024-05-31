@@ -9,8 +9,10 @@
     <mat-text-column name="fightRecord" headerText="Fight Record">
     </mat-text-column>
   
-    <mat-text-column name="boxingClub" headerText="Boxing Club">
-    </mat-text-column>
+    <ng-container matColumnDef="boxingClub">
+      <th *matHeaderCellDef mat-header-cell>boxingClub</th>
+      <td *matCellDef="let element" mat-cell> {{element.boxingClub ? element.boxingClub.name : ''}} </td>
+    </ng-container>  
   
     <ng-container matColumnDef="actions">
       <th *matHeaderCellDef class="w-75 th-center" mat-header-cell>Actions</th>

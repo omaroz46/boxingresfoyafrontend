@@ -12,8 +12,7 @@ import { EventService } from '../../services/event.service';
   styleUrl: './fight-detail.component.scss'
 })
 export class FightDetailComponent implements OnInit {
-  fight : Fight = new Fight()
-
+  
   public fightForm = new FormGroup({
     id: new FormControl(0),
     date: new FormControl(),
@@ -22,8 +21,8 @@ export class FightDetailComponent implements OnInit {
     result: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     event: new FormControl()
   })
-
-  fights: Fight[] = []; 
+  
+  fight : Fight = new Fight()
   events: Event[] = [];
 
   constructor (
@@ -48,9 +47,6 @@ export class FightDetailComponent implements OnInit {
         })
     }
 
-    this.fightService.getList().subscribe(obj => {
-      this.fights = obj
-    })
 
     this.eventService.getList().subscribe(obj => {
       this.events = obj
@@ -66,7 +62,7 @@ export class FightDetailComponent implements OnInit {
   }
 
   async save (formData: any) {
-    this.fights = Object.assign(formData)
+    this.fight = Object.assign(formData)
 
     if (this.fight.id) {
       this.fightService.update(this.fight).subscribe({

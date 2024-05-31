@@ -1,12 +1,12 @@
 <form (ngSubmit)="save(fightForm.value)" [formGroup]="fightForm">
 
   <mat-form-field>
-    <mat-label>Date</mat-label>
-    <input type="text"
-    formControlName="date"
-    matInput required />
-    <mat-error *ngIf="fightForm.controls['date'].invalid && (fightForm.controls['date'].dirty || fightForm.controls['date'].touched)">
-      Date is required
+    <mat-label>Datum</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+   <mat-error *ngIf="fightForm.get('date')?.invalid && (fightForm.get('date')?.dirty || fightForm.get('date')?.touched)">
+      <span *ngIf="fightForm.get('date')?.hasError('required')">Date is required</span>
     </mat-error>
   </mat-form-field>
 
@@ -41,13 +41,15 @@
   </mat-form-field>
 
   <mat-form-field>
-      <mat-label>Event</mat-label>
-      <input type="text"
-      formControlName="event"
-      matInput required />
-      <mat-error *ngIf="fightForm.controls['event'].invalid && (fightForm.controls['event'].dirty || fightForm.controls['event'].touched)">
-        Event is required
-      </mat-error>
+    <mat-label>Event</mat-label>
+    <mat-select formControlName="event" required>
+      <mat-option *ngFor="let event of events" [value]="event">
+        {{ event.description }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="fightForm.controls['event'].invalid && (fightForm.controls['event'].dirty || fightForm.controls['event'].touched)">
+      Event is required
+    </mat-error>
   </mat-form-field>
 
   <button mat-raised-button color="primary" type="submit">Save</button>

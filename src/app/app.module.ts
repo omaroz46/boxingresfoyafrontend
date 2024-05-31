@@ -35,6 +35,8 @@ import { MatCardModule } from '@angular/material/card';
 import { AppLoginComponent } from './pages/app-login/app-login.component';
 import { AppAuthGuard } from './guards/app.auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 
 export const authConfig: AuthConfig = {
@@ -100,8 +102,10 @@ export function storageFactory(): OAuthStorage {
       }
     }),
     ReactiveFormsModule,
+    MatDatepickerModule
   ],
   providers: [
+    provideNativeDateAdapter(),
     provideAnimationsAsync(),
     {
       provide: AuthConfig,

@@ -38,11 +38,11 @@ export class BoxingClubListComponent implements OnInit {
   }
 
   async edit (obj:BoxingClub) {
-    await this.router.navigate(['boxingClub', obj.id])
+    await this.router.navigate(['boxingclub', obj.id])
   }
 
   async create () {
-    await this.router.navigate(['boxingClub'])
+    await this.router.navigate(['boxingclub'])
   }
 
   delete (obj:BoxingClub) {

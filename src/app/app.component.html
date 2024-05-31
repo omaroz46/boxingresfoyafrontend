@@ -1,12 +1,12 @@
 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
-  <mat-icon>more_vert</mat-icon>
+  <mat-icon>menu</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item [routerLink]="['']">
+  <button mat-menu-item [routerLink]="['dashboard']">
     <mat-icon>home</mat-icon>
     <span>Dashboard</span>
   </button>
-  <button mat-menu-item [routerLink]="['boxingClubs']">
+  <button mat-menu-item [routerLink]="['boxingclubs']">
     <mat-icon>sports_mma</mat-icon>
     <span>Boxing Clubs</span>
   </button>

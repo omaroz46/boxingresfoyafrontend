@@ -31,13 +31,15 @@
   </mat-form-field>
 
   <mat-form-field>
-      <mat-label>Boxing Club</mat-label>
-      <input type="text"
-      formControlName="boxingClub"
-      matInput required />
-      <mat-error *ngIf="fighterForm.controls['boxingClub'].invalid && (fighterForm.controls['boxingClub'].dirty || fighterForm.controls['boxingClub'].touched)">
-        Boxing Club is required
-      </mat-error>
+    <mat-label>Boxing Club</mat-label>
+    <mat-select formControlName="boxingClub" required>
+      <mat-option *ngFor="let boxingClub of boxingClubs" [value]="boxingClub">
+        {{ boxingClub.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="fighterForm.controls['boxingClub'].invalid && (fighterForm.controls['boxingClub'].dirty || fighterForm.controls['boxingClub'].touched)">
+      Boxing Club is required
+    </mat-error>
   </mat-form-field>
 
   <button mat-raised-button color="primary" type="submit">Save</button>

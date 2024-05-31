@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Fight } from '../../data/fight';
 import { FightService } from '../../services/fight.service';
+import { Event } from '../../data/event';
 
 @Component({
   selector: 'app-fight-detail',
@@ -22,6 +23,7 @@ export class FightDetailComponent implements OnInit {
   })
 
   fights: Fight[] = []; 
+  events: Event[] = [];
 
   constructor (
     private router: Router,

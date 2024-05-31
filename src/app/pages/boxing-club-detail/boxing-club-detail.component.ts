@@ -51,7 +51,7 @@ export class BoxingClubDetailComponent implements OnInit {
   }
 
   async back(): Promise<void> {
-    await this.router.navigate(['boxingClubs']);
+    await this.router.navigate(['boxingclubs']);
   }
 
   async save(): Promise<void> {

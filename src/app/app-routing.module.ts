@@ -15,16 +15,16 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: 'boxingClubs',
+    path: 'boxingclubs',
     component: BoxingClubListComponent
   },
   {
-    path: 'boxingClub',
+    path: 'boxingclub',
     pathMatch: 'full',
     component: BoxingClubDetailComponent
   },
   {
-    path: 'boxingClub/:id',
+    path: 'boxingclub/:id',
     pathMatch: 'full',
     component: BoxingClubDetailComponent
   },
@@ -78,7 +78,7 @@ const routes: Routes = [
     component: NoAccessComponent
   },
   {
-    path: '',
+    path: 'dashboard',
     pathMatch: 'full',
     component: DashboardComponent,
     canActivate: [AppAuthGuard],

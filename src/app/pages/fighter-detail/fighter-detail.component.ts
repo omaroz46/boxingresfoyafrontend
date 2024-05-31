@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Fighter } from '../../data/fighter';
 import { FighterService } from '../../services/fighter.service';
+import { BoxingClub } from '../../data/boxing-club';
 
 
 
@@ -23,6 +24,7 @@ export class FighterDetailComponent implements OnInit {
   })
 
   fighters: Fighter[] = []; 
+  boxingClubs: BoxingClub[] = [];
 
   constructor (
     private router: Router,

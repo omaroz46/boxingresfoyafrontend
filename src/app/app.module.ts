@@ -34,6 +34,7 @@ import { NoAccessComponent } from './pages/no-access/no-access.component';
 import { MatCardModule } from '@angular/material/card';
 import { AppLoginComponent } from './pages/app-login/app-login.component';
 import { AppAuthGuard } from './guards/app.auth.guard';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 export const authConfig: AuthConfig = {
@@ -68,7 +69,8 @@ export function storageFactory(): OAuthStorage {
     FightListComponent,
     FightDetailComponent,
     NoAccessComponent,
-    AppLoginComponent
+    AppLoginComponent,
+    DashboardComponent
     
   ],
   imports: [

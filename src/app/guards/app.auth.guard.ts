@@ -29,7 +29,7 @@ export class AppAuthGuard {
   }
 
   checkRoles (route: ActivatedRouteSnapshot) : boolean {
-    const roles = route.data['roles'] as Array<string>;
+    const roles = route.data['roles'] as string[];
 
     if (roles === undefined || roles === null || roles.length === 0) {
       return true;

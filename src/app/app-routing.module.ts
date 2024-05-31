@@ -11,6 +11,7 @@ import { EventDetailComponent } from './pages/event-detail/event-detail.componen
 import { NoAccessComponent } from './pages/no-access/no-access.component';
 import { AppAuthGuard } from './guards/app.auth.guard';
 import { AppRoles } from './app.roles';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -71,14 +72,19 @@ const routes: Routes = [
     path: 'event/:id',
     pathMatch: 'full',
     component: EventDetailComponent,
-    canActivate: [AppAuthGuard],
-    data: {
-      roles: [AppRoles.Admin]
-    }
   },
   {
     path: 'noaccess',
     component: NoAccessComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    component: DashboardComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Admin]
+    }
   }
 ];
 

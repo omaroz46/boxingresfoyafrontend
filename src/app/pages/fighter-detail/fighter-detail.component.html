@@ -16,7 +16,7 @@
       formControlName="weightClass"
       matInput required />
       <mat-error *ngIf="fighterForm.controls['weightClass'].invalid && (fighterForm.controls['weightClass'].dirty || fighterForm.controls['weightClass'].touched)">
-        Weight Class is required and must be less than 50 characters
+        Weight Class is required and must be less than 30 characters
       </mat-error>
   </mat-form-field>
 
@@ -26,7 +26,7 @@
     formControlName="fightRecord"
     matInput required />
     <mat-error *ngIf="fighterForm.controls['fightRecord'].invalid && (fighterForm.controls['fightRecord'].dirty || fighterForm.controls['fightRecord'].touched)">
-      Fight Record is required and must be less than 50 characters
+      Fight Record is required and must be less than 15 characters
     </mat-error>
   </mat-form-field>
 

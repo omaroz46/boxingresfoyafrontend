@@ -19,8 +19,8 @@ export class FighterDetailComponent implements OnInit {
   public fighterForm = new FormGroup({
     id: new FormControl(0),
     fightRecord: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    weightClass: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    name: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+    weightClass: new FormControl('', [Validators.required, Validators.maxLength(15)]),
     boxingClub: new FormControl()
   })
 

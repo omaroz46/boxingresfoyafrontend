@@ -23,7 +23,7 @@
     <input type="text" formControlName="contactInfo" matInput required />
     <mat-error *ngIf="boxingClubForm.get('contactInfo')?.invalid && (boxingClubForm.get('contactInfo')?.dirty || boxingClubForm.get('contactInfo')?.touched)">
       <span *ngIf="boxingClubForm.get('contactInfo')?.hasError('required')">Contact Info is required</span>
-      <span *ngIf="boxingClubForm.get('contactInfo')?.hasError('maxlength')">Contact Info must be less than 100 characters</span>
+      <span *ngIf="boxingClubForm.get('contactInfo')?.hasError('maxlength')">Contact Info must be less than 50 characters</span>
     </mat-error>
   </mat-form-field>
 

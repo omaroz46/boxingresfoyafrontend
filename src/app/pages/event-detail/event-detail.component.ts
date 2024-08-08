@@ -17,10 +17,10 @@ export class EventDetailComponent implements OnInit {
     id: new FormControl(0),
     date: new FormControl(),
     venue: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    description: new FormControl('', [Validators.required, Validators.maxLength(100)])
+    description: new FormControl('', [Validators.required])
   })
 
-  events: Event[] = []; 
+  events: Event[] = [];
 
   constructor (
     private router: Router,

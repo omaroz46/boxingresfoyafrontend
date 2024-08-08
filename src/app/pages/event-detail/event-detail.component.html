@@ -25,10 +25,9 @@
     <input type="text" formControlName="description" matInput required maxlength="100" />
     <mat-error *ngIf="eventForm.get('description')?.invalid && (eventForm.get('description')?.dirty || eventForm.get('description')?.touched)">
       <span *ngIf="eventForm.get('description')?.hasError('required')">Description is required</span>
-      <span *ngIf="eventForm.get('description')?.hasError('maxlength')">Description must be less than 100 characters</span>
     </mat-error>
   </mat-form-field>
-  
+
   <button mat-raised-button color="primary" type="submit">Save</button>
   <button mat-raised-button type="button" (click)="back()">Cancel</button>
 

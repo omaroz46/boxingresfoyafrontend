@@ -15,12 +15,12 @@ export class BoxingClubDetailComponent implements OnInit {
 
   public boxingClubForm = new FormGroup({
     id: new FormControl(0),
-    name: new FormControl('', [Validators.required, Validators.maxLength(50)]), 
-    location: new FormControl('', [Validators.required, Validators.maxLength(100)]), 
-    contactInfo: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    location: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    contactInfo: new FormControl('', [Validators.required, Validators.maxLength(50)]),
   });
 
-  boxingClubs: BoxingClub[] = []; 
+  boxingClubs: BoxingClub[] = [];
 
   constructor (
     private router: Router,
@@ -70,5 +70,5 @@ export class BoxingClubDetailComponent implements OnInit {
       }
     }
   }
-  
+
 }

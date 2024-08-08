@@ -12,16 +12,16 @@ import { EventService } from '../../services/event.service';
   styleUrl: './fight-detail.component.scss'
 })
 export class FightDetailComponent implements OnInit {
-  
+
   public fightForm = new FormGroup({
     id: new FormControl(0),
     date: new FormControl(),
-    location: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    opponent: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    result: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    location: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    opponent: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+    result: new FormControl('', [Validators.required, Validators.maxLength(30)]),
     event: new FormControl()
   })
-  
+
   fight : Fight = new Fight()
   events: Event[] = [];
 

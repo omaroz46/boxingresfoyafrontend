@@ -16,7 +16,7 @@
       formControlName="location"
       matInput required />
       <mat-error *ngIf="fightForm.controls['location'].invalid && (fightForm.controls['location'].dirty || fightForm.controls['location'].touched)">
-        Location is required and must be less than 50 characters
+        Location is required and must be less than 100 characters
       </mat-error>
   </mat-form-field>
 
@@ -26,7 +26,7 @@
     formControlName="opponent"
     matInput required />
     <mat-error *ngIf="fightForm.controls['opponent'].invalid && (fightForm.controls['opponent'].dirty || fightForm.controls['opponent'].touched)">
-      Opponent is required and must be less than 50 characters
+      Opponent is required and must be less than 30 characters
     </mat-error>
   </mat-form-field>
 
@@ -36,7 +36,7 @@
       formControlName="result"
       matInput required />
       <mat-error *ngIf="fightForm.controls['result'].invalid && (fightForm.controls['result'].dirty || fightForm.controls['result'].touched)">
-        Result is required and must be less than 50 characters
+        Result is required and must be less than 30 characters
       </mat-error>
   </mat-form-field>
 
